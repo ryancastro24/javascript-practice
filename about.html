@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About us</title>
+
+	<script type="text/javascript" >
+		document.addEventListener("DOMContentLoaded", function(){
+
+			function myDisplayer(value){
+				document.querySelector("h1").innerHTML = value;
+			}
+
+			const promise = new Promise(function(resolve,reject){
+				let num = 10;
+
+				if(num == 5){
+					resolve("succesful!");
+				}
+				else{
+					reject("failed!");
+				}
+			});
+
+			promise.then(
+				resolve(myDisplayer(val)),
+				reject(myDisplayer(val))
+				)
+			
+
+			
+		})//end of DOMContentloaded
+		
+
+	</script>
+</head>
+<body>
+
+	<h1>output</h1>
+	
+</body>
+</html>

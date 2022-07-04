@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form manipulation</title>
+
+	<script type="text/javascript" >
+		document.addEventListener("DOMContentLoaded", function(){
+			document.querySelector("#submit-btn").disabled = true;
+			document.querySelector("#inputText").onkeyup = () => {
+
+				if(document.querySelector("#inputText").value.length > 0 ){
+					document.querySelector("#submit-btn").disabled = false;
+				}
+				else{
+					document.querySelector("#submit-btn").disabled = true;
+
+				}
+				
+			}
+
+
+			
+
+			let myArr = ['list1', 'list2'];
+			document.querySelector("form").onsubmit = () => {
+				const output = document.querySelector("h1");
+				const data = document.querySelector("#inputText").value;
+				document.querySelector("#submit-btn").disabled = true;
+				document.querySelector("#inputText").value = '';
+				let li = document.createElement("li");
+				li.innerHTML = data;
+				myArr.push(li.innerHTML);
+				console.log(myArr);
+				document.querySelector("#tasks").append(li);
+				return false;
+			}
+
+
+			
+		})//end of DOMContentloadde
+		
+
+	</script>
+</head>
+<body>
+
+	<h1>Form</h1>
+	<ul id="tasks">
+	</ul>
+	<form>
+		<input id="inputText" type="text" name="" placeholder="Enter text">
+		<input id="submit-btn" type="submit" name="" value="SUBMIT">
+	</form>
+
+	
+</body>
+</html>
