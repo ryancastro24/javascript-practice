@@ -13,7 +13,7 @@
 			const promise = new Promise(function(resolve,reject){
 				let num = 10;
 
-				if(num == 5){
+				if(num == 10){
 					resolve("succesful!");
 				}
 				else{
@@ -22,9 +22,9 @@
 			});
 
 			promise.then(
-				resolve(myDisplayer(val)),
-				reject(myDisplayer(val))
-				)
+				function(value){ myDisplayer(value);},
+				function(error){ myDisplayer(error);}
+				);
 			
 
 			
