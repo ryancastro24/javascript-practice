@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		var jq = $.noConflict();
+		jq(document).ready(function($){
+			let name = 'ryan';
+			$('#toogle').click(function(){
+				$('p').toggle(1000, function(){
+					alert("hello world");
+				});
+			});
+
+
+		$('#add').attr('disabled',true);
+
+
+		$("#inputText").keyup(function(){
+			
+
+			if($("#inputText").val() == ''){
+				$('#add').attr('disabled',true);
+			}
+
+			else{
+				$('#add').attr('disabled',false);
+			}
+
+		})
+
+		$('form').submit(function(){
+
+			let value = $('#inputText').val();
+			$('ul').append(`<li> ${value}</li>`);	
+
+			$('#inputText').val('');
+
+			if($("#inputText").val() == ''){
+				$('#add').attr('disabled',true);
+			}
+
+			else{
+				$('#add').attr('disabled',false);
+			}
+
+
+			return false;
+
+		});
+
+
+		$('#dark').click(function() {
+			$('body').addClass('darkmode');
+			$('div').css('background-color','#444444').animate({left:'200px'});
+		});
+
+
+		$('#light').click(function() {
+			$('body').removeClass('darkmode');
+			$('div').css('background-color','#EDEDED').animate({left:'0px'});
+		});
+
+
+
+
+
+		
+
+
+
+		}); // end of document ready
+
+		
+	</script>
+
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", () => {
+			
+			document.querySelector("p").onclick = () => {
+				console.log("aye matie!");
+			}
+		});
+
+	</script>
+
+
+
+	<style type="text/css">
+		
+		.darkmode{
+			color:#fff;
+			background-color:#171717;
+		}
+
+		div{
+			width:200px; 
+			height:200px;
+			background-color:#EDEDED;
+			box-shadow:3px 3px 5px rgba(0,0,0,0.2);
+			position:relative;
+		}
+		.changeDiv{
+			background-color:blue;
+
+		}
+	
+	</style>
+</head>
+<body>
+
+	<p>hello world</p>
+	<div></div>
+	<button id="toogle">hide/show</button>
+
+	<ul>
+	
+	</ul>
+
+	<form>
+		<input id="inputText" type="text" name="">
+		<input id="add" type="submit" name="" value="submit">
+	</form>
+	
+	<button id="dark">darkmode</button>
+	<button id="light">ligthmode</button>
+	
+</body>
+</html>
