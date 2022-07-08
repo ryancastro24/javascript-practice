@@ -5,13 +5,42 @@
 </head>
 
 <script type="text/javascript">
-	document.addEventListener("DOMContentLoaded", () => {
+	
+document.addEventListener("DOMContentLoaded", function(){
 
-		fetch('')
 
-	}); // end of DOMContenLoaded
+document.querySelector('form').onsubmit = () => {
+
+  	const baseURL = 'https://api.sampleapis.com/codingresources/codingResources';
+	fetch(baseURL)
+ 	.then(resp => resp.json())
+  	.then(data => {
+  		let val = document.querySelector("#inputText").value;
+  		document.querySelector('pre').innerHTML = Object.values(data[val]);
+  		document.querySelector("#inputText").value = '';
+  	});
+
+
+return false;
+
+}
+
+
+
+});
+
+
+
 </script>
 <body>
+
+<pre>JSON GOES HERE</pre>
+
+
+<form>
+	<input id="inputText" type="text" name="" placeholder="enter text">
+	<input type="submit" name="" value="Get Data">
+</form>
 
 </body>
 </html>
