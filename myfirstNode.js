@@ -1,49 +1,57 @@
-const url = require('url');
 const http = require('http');
 const fs = require('fs');
-const uc = require('upper-case');
+const url = require('url');
 const events = require('events');
 const eventEmitter = new events.EventEmitter();
 
 
-const server = http.createServer(function(req,res){
-	res.writeHead(404,{'Content-type': 'text/html'});
-	const firstEvent = () => {
-		let q = url.parse(req.url, true);
-	let filename = "." + '/about.html';
 
-	fs.readFile(filename,function(err,data){
 
-		if(err){
+const server = http.createServer(function(req, res){
+	res.writeHead(200,{'Content-type':'text/html'});
+
+	let home = () => {
+		const adr = 'http://localhost:1000/about.html'
+		let q =  url.parse(adr, true);
+		let filename = 'about.html';
+		
+		fs.readFile(filename, (err,data)=>{
+			if(err)throw err;
 			
-			return res.end('404 not found');
-		}
-			
-		res.write(data);
-		res.write(uc.upperCase('hello world'));
-		return res.end();
-
-	});
+			console.log(q.search);
+			res.write(data);
+			return res.end();
+		});
 	};
 
-	const secondEvent = () => {
+	let anotherFunction = () => {
+		fs.readFile('mynewfile1.txt', function(err,data){
+			if(err)throw err;
+			res.write(data);
+			return res.end();
+		});
+
+	}
+			
+	let addtext = () => {
+		fs.appendFile("mynewfile1.txt",'new text added!', function(err,data){
+			if(err)throw err;
+			res.write('uploaded!');
+			return res.end();
+		});
+		
+	};
+
+
+
+	eventEmitter.on("first", home);
+	eventEmitter.on("second", anotherFunction);
+	eventEmitter.on('third',addtext);
+
+	eventEmitter.emit("third");
 	
-		res.write('this is the second content');
-		return res.end();
-	}	
-
-
-	eventEmitter.on('first',firstEvent);
-	eventEmitter.on('second',secondEvent);
-
-
-	eventEmitter.emit('second');
-
-
-	
 	
 
-	
-});
+})
 
-server.listen(3000,console.log('running at http://127.0.0.1.3000'));
+server.listen(1000, console.log('running at http://127.0.0.1:1000'));
