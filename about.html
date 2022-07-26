@@ -2,40 +2,15 @@
 <html>
 <head>
 	<title>About us</title>
-
-	<script type="text/javascript" >
-		document.addEventListener("DOMContentLoaded", function(){
-
-			function myDisplayer(value){
-				document.querySelector("h1").innerHTML = value;
-			}
-
-			const promise = new Promise(function(resolve,reject){
-				let num = 10;
-
-				if(num == 10){
-					resolve("succesful!");
-				}
-				else{
-					reject("failed!");
-				}
-			});
-
-			promise.then(
-				function(value){ myDisplayer(value);},
-				function(error){ myDisplayer(error);}
-				);
-			
-
-			
-		})//end of DOMContentloaded
-		
-
-	</script>
+	<script type="text/javascript" src="myfirstNode.js" defer></script>
 </head>
 <body>
 
-	<h1>output</h1>
+	<form>
+		<input id="input-field" type="text" name="name" placeholder="enter name">
+		<input type="submit" name="" value="submit">
+
+	</form>
 	
 </body>
 </html>
