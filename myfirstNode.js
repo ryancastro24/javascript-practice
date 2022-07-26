@@ -20,6 +20,7 @@ const server = http.createServer(function(req, res){
 			
 			console.log(q.search);
 			res.write(data);
+			console.log('hehhe sorry');
 			return res.end();
 		});
 	};
