@@ -11,14 +11,12 @@ const server = http.createServer(function(req, res){
 	res.writeHead(200,{'Content-type':'text/html'});
 
 	let home = () => {
-		const adr = 'http://localhost:1000/about.html'
+		
 		let q =  url.parse(adr, true);
 		let filename = 'about.html';
 		
 		fs.readFile(filename, (err,data)=>{
 			if(err)throw err;
-			
-			console.log(q.search);
 			res.write(data);
 			return res.end();
 		});
