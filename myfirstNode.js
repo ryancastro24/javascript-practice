@@ -19,6 +19,7 @@ const server = http.createServer(function(req, res){
 			if(err)throw err;
 			
 			console.log(q.search);
+			
 			res.write(data);
 			return res.end();
 		});
