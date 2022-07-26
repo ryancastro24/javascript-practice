@@ -10,14 +10,14 @@ const eventEmitter = new events.EventEmitter();
 const server = http.createServer(function(req, res){
 	res.writeHead(200,{'Content-type':'text/html'});
 
-	let home = () => {
+	let home = () => { // home fucntion calls the about  html file
 		
 		let q =  url.parse(adr, true);
 		let filename = 'about.html';
 		
 		fs.readFile(filename, (err,data)=>{
 			if(err)throw err;
-			res.write(data);
+			res.write(data)
 			return res.end();
 		});
 	};
